@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+/* Colors, fonts and radii come from site.config.ts through CSS variables set on <html>. */
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-ink: var(--c-ink);
+  --color-text: var(--c-text);
+  --color-muted: var(--c-muted);
+  --color-accent: var(--c-accent);
+  --color-accent-ink: var(--c-accent-ink);
+  --color-soft: var(--c-soft);
+  --color-line: var(--c-line);
+  --font-display: var(--f-display), Georgia, serif;
+  --font-sans: var(--f-body), system-ui, sans-serif;
+  --font-script: var(--f-script), cursive;
+  --font-wordmark: var(--f-wordmark), Georgia, serif;
+  --radius-card: var(--r-card);
+  --radius-pill: var(--r-pill);
+  --radius-media: var(--r-media);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  color: var(--c-ink);
+  text-transform: var(--h-case, none);
+  letter-spacing: var(--h-track, normal);
+}
+
+.wordmark {
+  font-family: var(--font-wordmark);
+}
+
+/* Menu tabs: sideways scroll, sticky under the header on small screens */
+.menu-tabbar {
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+}
+.menu-tabbar::-webkit-scrollbar {
+  display: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--c-soft);
+  color: var(--c-ink);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--r-pill);
+  padding: 0.85rem 1.4rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn-primary {
+  background: var(--c-accent);
+  color: var(--c-accent-ink);
+}
+.btn-ghost {
+  border: 1px solid var(--c-line);
+  background: var(--c-surface);
+  color: var(--c-ink);
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
